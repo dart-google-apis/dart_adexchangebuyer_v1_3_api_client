@@ -709,13 +709,13 @@ class DirectDealsList {
 /** The configuration data for an Ad Exchange performance report list. TODO(nathanbullock): need to add some release tests before releasing this. https://sites.google.com/a/google.com/adx-integration/Home/engineering/binary-releases/rtb-api-release https://cs.corp.google.com/#piper///depot/google3/contentads/adx/tools/rtb_api/adxrtb.py */
 class PerformanceReport {
 
-  /** Rate of various prefiltering statuses per match. */
+  /** Rate of various prefiltering statuses per match. Please refer to the callout-status-codes.txt file for different statuses. */
   core.List<core.Object> calloutStatusRate;
 
   /** Average QPS for cookie matcher operations. */
   core.List<core.Object> cookieMatcherStatusRate;
 
-  /** Rate of ads with a given status. */
+  /** Rate of ads with a given status. Please refer to the creative-status-codes.txt file for different statuses. */
   core.List<core.Object> creativeStatusRate;
 
   /** Average QPS for hosted match operations. */

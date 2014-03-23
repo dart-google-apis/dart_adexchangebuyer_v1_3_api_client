@@ -148,7 +148,7 @@ class CreativesResource_ {
       _client = client;
 
   /**
-   * Gets the status for a single creative.
+   * Gets the status for a single creative. A creative will be available 30-40 minutes after submission.
    *
    * [accountId] - The id for the account that will serve this creative.
    *
@@ -216,7 +216,7 @@ class CreativesResource_ {
   }
 
   /**
-   * Retrieves a list of the authenticated user's active creatives.
+   * Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40 minutes after submission.
    *
    * [maxResults] - Maximum number of entries returned on one result page. If not set, the default is 100. Optional.
    *   Minimum: 1
