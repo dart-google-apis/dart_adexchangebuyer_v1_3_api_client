@@ -218,6 +218,12 @@ class CreativesResource_ {
   /**
    * Retrieves a list of the authenticated user's active creatives. A creative will be available 30-40 minutes after submission.
    *
+   * [accountId] - When specified, only creatives for the given account ids are returned.
+   *   Repeated values: allowed
+   *
+   * [buyerCreativeId] - When specified, only creatives for the given buyer creative ids are returned.
+   *   Repeated values: allowed
+   *
    * [maxResults] - Maximum number of entries returned on one result page. If not set, the default is 100. Optional.
    *   Minimum: 1
    *   Maximum: 1000
@@ -232,12 +238,14 @@ class CreativesResource_ {
    *
    * [optParams] - Additional query parameters
    */
-  async.Future<CreativesList> list({core.int maxResults, core.String pageToken, core.String statusFilter, core.Map optParams}) {
+  async.Future<CreativesList> list({core.List<core.int> accountId, core.List<core.String> buyerCreativeId, core.int maxResults, core.String pageToken, core.String statusFilter, core.Map optParams}) {
     var url = "creatives";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
 
     var paramErrors = new core.List();
+    if (accountId != null) queryParams["accountId"] = accountId;
+    if (buyerCreativeId != null) queryParams["buyerCreativeId"] = buyerCreativeId;
     if (maxResults != null) queryParams["maxResults"] = maxResults;
     if (pageToken != null) queryParams["pageToken"] = pageToken;
     if (statusFilter != null && !["approved", "disapproved", "not_checked"].contains(statusFilter)) {

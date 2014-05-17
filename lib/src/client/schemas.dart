@@ -479,7 +479,7 @@ class CreativeFilteringReasonsReasons {
   /** The number of times the creative was filtered for the status. The count is aggregated across all publishers on the exchange. */
   core.int filteringCount;
 
-  /** The filtering status code. Please refer to "creative-status-codes.txt" in the Downloads section for the status codes. */
+  /** The filtering status code. Please refer to the creative-status-codes.txt file for different statuses. */
   core.int filteringStatus;
 
   /** Create new CreativeFilteringReasonsReasons from JSON data */
@@ -582,6 +582,9 @@ class DirectDeal {
   /** Resource type. */
   core.String kind;
 
+  /** Deal name. */
+  core.String name;
+
   /** The minimum price for this direct deal. In cpm micros of currency according to currency_code. If set, then this deal is eligible for the private exchange tier of buying (below fixed price priority, run as a second price auction). */
   core.int privateExchangeMinCpm;
 
@@ -613,6 +616,9 @@ class DirectDeal {
     }
     if (json.containsKey("kind")) {
       kind = json["kind"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
     }
     if (json.containsKey("privateExchangeMinCpm")) {
       privateExchangeMinCpm = (json["privateExchangeMinCpm"] is core.String) ? core.int.parse(json["privateExchangeMinCpm"]) : json["privateExchangeMinCpm"];
@@ -649,6 +655,9 @@ class DirectDeal {
     }
     if (kind != null) {
       output["kind"] = kind;
+    }
+    if (name != null) {
+      output["name"] = name;
     }
     if (privateExchangeMinCpm != null) {
       output["privateExchangeMinCpm"] = privateExchangeMinCpm;
