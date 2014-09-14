@@ -9,9 +9,11 @@ abstract class Client extends ClientBase {
   //
 
   AccountsResource_ get accounts => new AccountsResource_(this);
+  BillingInfoResource_ get billingInfo => new BillingInfoResource_(this);
   CreativesResource_ get creatives => new CreativesResource_(this);
   DirectDealsResource_ get directDeals => new DirectDealsResource_(this);
   PerformanceReportResource_ get performanceReport => new PerformanceReportResource_(this);
+  PretargetingConfigResource_ get pretargetingConfig => new PretargetingConfigResource_(this);
 
   //
   // Parameters

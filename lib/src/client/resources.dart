@@ -140,6 +140,76 @@ class AccountsResource_ {
   }
 }
 
+class BillingInfoResource_ {
+
+  final Client _client;
+
+  BillingInfoResource_(Client client) :
+      _client = client;
+
+  /**
+   * Returns the billing information for one account specified by account ID.
+   *
+   * [accountId] - The account id.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<BillingInfo> get(core.int accountId, {core.Map optParams}) {
+    var url = "billinginfo/{accountId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new BillingInfo.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of billing information for all accounts of the authenticated user.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<BillingInfoList> list({core.Map optParams}) {
+    var url = "billinginfo";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new BillingInfoList.fromJson(data));
+  }
+}
+
 class CreativesResource_ {
 
   final Client _client;
@@ -395,6 +465,233 @@ class PerformanceReportResource_ {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new PerformanceReportList.fromJson(data));
+  }
+}
+
+class PretargetingConfigResource_ {
+
+  final Client _client;
+
+  PretargetingConfigResource_(Client client) :
+      _client = client;
+
+  /**
+   * Deletes an existing pretargeting config.
+   *
+   * [accountId] - The account id to delete the pretargeting config for.
+   *
+   * [configId] - The specific id of the configuration to delete.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<core.Map> delete(core.int accountId, core.int configId, {core.Map optParams}) {
+    var url = "pretargetingconfigs/{accountId}/{configId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (configId == null) paramErrors.add("configId is required");
+    if (configId != null) urlParams["configId"] = configId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response;
+  }
+
+  /**
+   * Gets a specific pretargeting configuration
+   *
+   * [accountId] - The account id to get the pretargeting config for.
+   *
+   * [configId] - The specific id of the configuration to retrieve.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<PretargetingConfig> get(core.int accountId, core.int configId, {core.Map optParams}) {
+    var url = "pretargetingconfigs/{accountId}/{configId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (configId == null) paramErrors.add("configId is required");
+    if (configId != null) urlParams["configId"] = configId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new PretargetingConfig.fromJson(data));
+  }
+
+  /**
+   * Inserts a new pretargeting configuration.
+   *
+   * [request] - PretargetingConfig to send in this request
+   *
+   * [accountId] - The account id to insert the pretargeting config for.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<PretargetingConfig> insert(PretargetingConfig request, core.int accountId, {core.Map optParams}) {
+    var url = "pretargetingconfigs/{accountId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new PretargetingConfig.fromJson(data));
+  }
+
+  /**
+   * Retrieves a list of the authenticated user's pretargeting configurations.
+   *
+   * [accountId] - The account id to get the pretargeting configs for.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<PretargetingConfigList> list(core.int accountId, {core.Map optParams}) {
+    var url = "pretargetingconfigs/{accountId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new PretargetingConfigList.fromJson(data));
+  }
+
+  /**
+   * Updates an existing pretargeting config. This method supports patch semantics.
+   *
+   * [request] - PretargetingConfig to send in this request
+   *
+   * [accountId] - The account id to update the pretargeting config for.
+   *
+   * [configId] - The specific id of the configuration to update.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<PretargetingConfig> patch(PretargetingConfig request, core.int accountId, core.int configId, {core.Map optParams}) {
+    var url = "pretargetingconfigs/{accountId}/{configId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (configId == null) paramErrors.add("configId is required");
+    if (configId != null) urlParams["configId"] = configId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "PATCH", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new PretargetingConfig.fromJson(data));
+  }
+
+  /**
+   * Updates an existing pretargeting config.
+   *
+   * [request] - PretargetingConfig to send in this request
+   *
+   * [accountId] - The account id to update the pretargeting config for.
+   *
+   * [configId] - The specific id of the configuration to update.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<PretargetingConfig> update(PretargetingConfig request, core.int accountId, core.int configId, {core.Map optParams}) {
+    var url = "pretargetingconfigs/{accountId}/{configId}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (accountId == null) paramErrors.add("accountId is required");
+    if (accountId != null) urlParams["accountId"] = accountId;
+    if (configId == null) paramErrors.add("configId is required");
+    if (configId != null) urlParams["configId"] = configId;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new PretargetingConfig.fromJson(data));
   }
 }
 
